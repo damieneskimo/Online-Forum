@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 	$name = htmlentities(trim($_POST['name']));
   	$email = htmlentities(trim($_POST['email']));
   	if(trim($_POST['password']) == trim($_POST['confirm-password'])) {
-  		$password = htmlentities(trim($_POST['password']));
+  		$password = crypt($_POST['password']);
 		
 		// Create user in the database
   		$user = User::make($name, $email, $password);

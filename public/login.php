@@ -2,6 +2,7 @@
 
 include('layouts/header.php');
 require_once("../includes/initialize.php");
+require_once("../includes/db.php");
 
 if($session->is_logged_in()) {
   	redirect_to("topic_list.php");
@@ -11,12 +12,13 @@ if($session->is_logged_in()) {
 if (isset($_POST['submit'])) { 
 
   	$email = htmlentities(trim($_POST['email']));
-  	$password = htmlentities(trim($_POST['password']));
-  
-  	// Check database to see if email/password exist.
+  	$password = $_POST['password'];
+
+	// Check database to see if email/password exist.
+	  
   	$user = new User();
 	$found_user = $user->authenticate($email, $password);
-	
+
 	if ($found_user) {
 	    $session->login($found_user);
 	    redirect_to("topic_list.php");
@@ -26,8 +28,8 @@ if (isset($_POST['submit'])) {
 	}
   
 } else { // Form has not been submitted.
-  $username = "";
-  $password = "";
+	$username = "";
+	$password = "";
 }
 
 ?>

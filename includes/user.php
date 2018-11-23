@@ -25,7 +25,8 @@ class User extends DB {
 		    $user->password = $password;
 		    $user->contribution = 0;
 
-		    return $user->create();
+			$user->create();
+			return $user;
 		} else {
 			return false;
 		}
@@ -35,36 +36,18 @@ class User extends DB {
 	public static function authenticate($email="", $password="") {
 	    global $database;
 	    $email = $database->escape_value($email);
-	    $password = $database->escape_value($password);
 
 	    $sql  = "SELECT * FROM users ";
 	    $sql .= "WHERE email = '{$email}' ";
-	    $sql .= "AND password = '{$password}' ";
 	    $sql .= "LIMIT 1";
 
-	 //    /* create a prepared statement */
-		// if ($stmt = $database->connection->prepare($sql)) {
+		$result_array = self::find_by_sql($sql);
+		$user = ! empty($result_array) ? array_shift($result_array) : null;
 
-		//     /* bind parameters for markers */
-		//     $stmt->bind_param("ss", $email, $password);
-
-		//     /* execute query */
-		//     $stmt->execute();
-
-		//     $result = $stmt->get_result();
-	 //        while ($row = $result->fetch_array(MYSQLI_NUM))
-	 //        {
-	 //            foreach ($row as $r)
-	 //            {
-	 //                $result_array[] = $r;
-	 //            }
-	 //        }
-		    
-		// }
-
-	    $result_array = self::find_by_sql($sql);
-		return !empty($result_array) ? array_shift($result_array) : false;
+		if (hash_equals($user->password, crypt($password, $user->password))) {
+			return $user;
+		} else {
+			return false;
+		}
 	}
-
 }
-

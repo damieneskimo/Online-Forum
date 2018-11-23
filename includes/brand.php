@@ -4,7 +4,7 @@ require_once('database.php');
 
 class Brand extends DB {
 	
-	protected static $table_name = 'brand';
+	protected static $table_name = 'brands';
 	protected static $db_fields=array('id', 'name', 'description');
 
 	public $id;
