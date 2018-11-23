@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4135
+# Version 4541
 #
 # http://www.sequelpro.com/
-# http://code.google.com/p/sequel-pro/
+# https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.5.42)
-# Database: online_forum
-# Generation Time: 2016-06-17 02:35:02 +0000
+# Host: 127.0.0.1 (MySQL 5.6.40)
+# Database: forum
+# Generation Time: 2018-11-23 10:14:10 +0000
 # ************************************************************
 
 
@@ -81,7 +81,7 @@ VALUES
 	(34,'fdsfasdfsa',1,48,'2016-06-16 12:31:46'),
 	(35,'fasdfsaf',1,3,'2016-06-16 12:38:43'),
 	(36,'fdfsafsdf',2,5,'2016-06-16 14:19:17'),
-	(37,'fdsfadfdfdffdfdsfsaf',2,1,'2016-06-16 16:24:11');
+	(38,'fasdfasf edit',2,1,'2018-11-23 06:03:56');
 
 /*!40000 ALTER TABLE `replies` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -146,7 +146,7 @@ VALUES
 	(47,'fdfd','fasdf',2,'2016-06-16 12:30:36'),
 	(48,'fdsafsd','fasfdsaf',1,'2016-06-16 12:31:35'),
 	(49,'fdsfasd','fsdafasf',1,'2016-06-16 12:32:02'),
-	(50,'fsdaf','fsdafsf',2,'2016-06-16 16:23:27');
+	(50,'fsdaf','fsdafsf . sdfsaf',2,'2018-11-23 06:04:14');
 
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -172,8 +172,8 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `created_on`, `password`, `contribution`)
 VALUES
-	(1,'Darren','darren@test.com','2016-06-16 10:23:14','1234',12),
-	(2,'Damien','damien@test.com','2016-04-28 15:29:28','1234',9);
+	(1,'damien','damien@test.com','2018-11-23 23:08:10','$1$ruJh8k25$gWGLzZblNFEHb.lSQ8Jm51',0),
+	(2,'will','will@test.com','2018-11-23 23:09:13','$1$aEwRyc2w$VuHCLbx5ifrM7YNZQd2h60',0);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
